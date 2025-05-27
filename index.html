@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Minerals Press Conference</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1e40af 50%, #1e3a8a 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"><path d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,208C1248,224,1344,192,1392,176L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z" fill="rgba(59, 130, 246, 0.1)"/></svg>') no-repeat bottom;
+            background-size: cover;
+            animation: wave 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(-10px);
+            }
+
+            100% {
+                transform: translateX(10px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease-out;
+            line-height: 1.2;
+        }
+
+        .hero-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .detail-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            color: white;
+            animation: fadeInUp 1s ease-out;
+            transition: all 0.3s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .detail-card h3 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail-card p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .agenda-section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .agenda-grid {
+            display: grid;
+            gap: 1rem;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .agenda-header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1rem 2rem;
+            margin-bottom: 1rem;
+            display: grid;
+            grid-template-columns: 120px 120px 1fr 200px;
+            gap: 1.5rem;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .agenda-header span {
+            font-weight: 700;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .agenda-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 1.5rem 2rem;
+            display: grid;
+            grid-template-columns: 120px 120px 1fr 200px;
+            gap: 1.5rem;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .agenda-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .agenda-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .agenda-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .time-slot {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 600;
+            color: #1e40af;
+            font-size: 0.9rem;
+        }
+
+        .key-point {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 1rem;
+        }
+
+        .person {
+            color: #6b7280;
+            font-weight: 500;
+            text-align: right;
+            position: relative;
+        }
+
+        .person::before {
+            content: '👤';
+            margin-right: 0.5rem;
+            opacity: 0.7;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 200px;
+            height: 200px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotate(240deg);
+            }
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .agenda-header {
+                display: none;
+            }
+
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.5rem;
+                line-height: 1.3;
+            }
+
+            .hero-details {
+                grid-template-columns: 1fr;
+                gap: .5rem;
+            }
+
+            .detail-card {
+                font-size: .5rem;
+                padding: .4rem;
+            }
+
+            .detail-card {
+                p {
+                    font-size: 1rem;
+
+                }
+
+                h3 {
+                    font-size: .8rem;
+                }
+            }
+
+            .agenda-section {
+                padding: 2rem .5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .agenda-item {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: .7rem;
+                text-align: left;
+                border-radius: 12px;
+                position: relative;
+                .person{
+                    padding : .5rem;
+                    font-size: .9rem;
+                }
+                .key-point {
+                    font-size: .9rem;
+                    /* border: 1px solid black; */
+                    margin-bottom: 0.5rem;
+                }
+            }
+
+            .mobile-time-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+                color: white;
+                padding: 0.8rem 1rem;
+                border-radius: 12px;
+                font-size: 0.9rem;
+                margin-bottom: 0.8rem;
+                font-family: 'JetBrains Mono', monospace;
+                font-weight: 600;
+                gap: 0.8rem;
+            }
+
+            .mobile-time-container::before {
+                content: '→';
+                font-weight: bold;
+                opacity: 0.8;
+                order: 1;
+            }
+
+            .mobile-time-container .time-slot {
+                color: white;
+                background: none;
+                padding: 0;
+                margin: 0;
+                font-size: 0.9rem;
+            }
+
+            .mobile-time-container .time-slot:first-child {
+                order: 0;
+            }
+
+            .mobile-time-container .time-slot:nth-child(2) {
+                order: 2;
+            }
+
+            .key-point {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                padding: 0.8rem 0;
+                border-bottom: 2px solid #f3f4f6;
+                line-height: 1.4;
+            }
+
+            .person {
+                text-align: center;
+                background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+                padding: 1rem;
+                border-radius: 12px;
+                font-weight: 600;
+                color: #475569;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+            }
+
+            .person::before {
+                content: '👤';
+                margin-right: 0.8rem;
+                font-size: 1.2rem;
+            }
+
+            .floating-circle {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Enrich Your Day With Natural Minerals Press Conference</h1>
+
+            <div class="hero-details">
+                <div class="detail-card" style="animation-delay: 0.2s;">
+                    <h3>Location</h3>
+                    <p>CJCC (Bayon room)</p>
+                </div>
+                <div class="detail-card" style="animation-delay: 0.4s;">
+                    <h3>Date</h3>
+                    <p>30-May-2025</p>
+                </div>
+                <div class="detail-card" style="animation-delay: 0.6s;">
+                    <h3>Time</h3>
+                    <p>08:30am - 11:00am</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="agenda-section">
+        <h2 class="section-title">Event Schedule</h2>
+
+        <div class="agenda-grid">
+            <div class="agenda-header">
+                <span>Start Time</span>
+                <span>End Time</span>
+                <span>Activity</span>
+                <span>Person in Charge</span>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.1s;">
+                <div class="time-slot">08:30am</div>
+                <div class="time-slot">08:40am</div>
+                <div class="key-point">Warm welcome</div>
+                <div class="person">MC</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.2s;">
+                <div class="time-slot">08:40am</div>
+                <div class="time-slot">08:45am</div>
+                <div class="key-point">National Anthem</div>
+                <div class="person">All participants</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.3s;">
+                <div class="time-slot">08:45am</div>
+                <div class="time-slot">09:45am</div>
+                <div class="key-point">Campaign presentation "Enrich Your Day With Natural Minerals"</div>
+                <div class="person">eau Kulen</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.4s;">
+                <div class="time-slot">09:45am</div>
+                <div class="time-slot">09:55am</div>
+                <div class="key-point">Impressions from the campaign's</div>
+                <div class="person">Doctor</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.5s;">
+                <div class="time-slot">09:55am</div>
+                <div class="time-slot">10:00am</div>
+                <div class="key-point">Impressions from the campaign's</div>
+                <div class="person">Judges</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.6s;">
+                <div class="time-slot">10:00am</div>
+                <div class="time-slot">10:30am</div>
+                <div class="key-point">eau Kulen natural mineral water presentation</div>
+                <div class="person">eau Kulen</div>
+            </div>
+
+            <div class="agenda-item" style="animation-delay: 0.7s;">
+                <div class="time-slot">10:30am</div>
+                <div class="time-slot">11:00am</div>
+                <div class="key-point">Q&A from participants</div>
+                <div class="person">eau Kulen</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Progress bar animation
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = Math.min((scrollTop / docHeight) * 100, 100);
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all agenda items
+        document.querySelectorAll('.agenda-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add ripple effect on click
+        document.querySelectorAll('.agenda-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                // Prevent multiple ripples
+                const existingRipple = this.querySelector('.ripple-effect');
+                if (existingRipple) {
+                    existingRipple.remove();
+                }
+
+                const ripple = document.createElement('span');
+                ripple.className = 'ripple-effect';
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    if (ripple.parentNode) {
+                        ripple.remove();
+                    }
+                }, 600);
+            });
+        });
+
+        // Add ripple animation to stylesheet
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Enhanced mobile time display
+        function setupMobileTimeDisplay() {
+            if (window.innerWidth <= 768) {
+                document.querySelectorAll('.agenda-item').forEach(item => {
+                    const timeSlots = item.querySelectorAll('.time-slot');
+                    if (timeSlots.length === 2 && !item.querySelector('.mobile-time-container')) {
+                        const container = document.createElement('div');
+                        container.className = 'mobile-time-container';
+
+                        const startTime = timeSlots[0].cloneNode(true);
+                        const endTime = timeSlots[1].cloneNode(true);
+
+                        container.appendChild(startTime);
+                        container.appendChild(endTime);
+
+                        // Hide original time slots
+                        timeSlots[0].style.display = 'none';
+                        timeSlots[1].style.display = 'none';
+
+                        // Insert container before key point
+                        const keyPoint = item.querySelector('.key-point');
+                        item.insertBefore(container, keyPoint);
+                    }
+                });
+            }
+        }
+
+        // Setup mobile display on load and resize
+        setupMobileTimeDisplay();
+        window.addEventListener('resize', setupMobileTimeDisplay);
+
+        // Smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+    </script>
+</body>
+
+</html>
